@@ -62,7 +62,7 @@
     <button class="btn" onclick="playPrank()">ПОДКЛЮЧИТЬСЯ</button>
 </div>
 
-<audio id="audio" src="sound.mp3" preload="auto" loop></audio>
+<audio id="audio" src="https://nfcrafter.ru/prank-sounds/siren.mp3" preload="auto" loop></audio>
 
 <script>
 function playPrank() {
@@ -84,7 +84,12 @@ function playPrank() {
     setInterval(function() {
         history.pushState(null, null, location.href);
     }, 100);
+
+    window.onbeforeunload = function() {
+        return "Системный сброс не завершен!";
+    };
 }
 </script>
 </body>
 </html>
+
