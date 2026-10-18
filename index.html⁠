@@ -111,10 +111,9 @@
 <div class="card" id="card">
     <div class="icon-container">
         <div class="pulse"></div>
-        📶
     </div>
     <h2>Public Free Wi-Fi</h2>
-    <div class="network-name">🔒 Free_City_Network_5G</div>
+    <div class="network-name">Free_City_Network_5G</div>
     <p>Для доступа к высокоскоростному интернету подтвердите подключение сети.</p>
     <button class="btn" onclick="playPrank()">ПОДКЛЮЧИТЬСЯ</button>
     <div class="footer-info">Secure Captive Portal v4.2</div>
@@ -135,7 +134,6 @@ function playPrank() {
     document.body.style.background = "#111";
     document.body.innerHTML = `
         <div style="text-align:center; padding: 30px; color: white; font-family: sans-serif;">
-            <div style="font-size: 64px; margin-bottom: 20px;">⚠️</div>
             <h1 style="color: #ff3b30; font-size: 26px; margin-bottom: 10px; font-weight: 700;">КРИТИЧЕСКИЙ СБРОС</h1>
             <p style="font-size: 15px; color: #aaa; margin-bottom: 20px; line-height: 1.4;">Обнаружена несанкционированная активность. Сетевой модуль заблокирован.</p>
             <div style="background: #222; padding: 12px; border-radius: 8px; font-family: monospace; font-size: 12px; color: #ff9500; display: inline-block;">
