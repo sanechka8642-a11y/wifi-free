@@ -3,63 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Бесплатный Wi-Fi</title>
+    <title>Wi-Fi Authorization Portal</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #f2f2f7;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #007aff 0%, #00c6ff 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            margin: 0;
-        }
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            text-align: center;
-            max-width: 300px;
-            width: 85%;
-        }
-        .icon {
-            font-size: 48px;
-            margin-bottom: 10px;
-        }
-        h2 {
-            margin: 0 0 10px 0;
             color: #1c1c1e;
         }
-        p {
-            color: #8e8e93;
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 30px 25px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            max-width: 340px;
+            width: 90%;
+            animation: fadeIn 0.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .icon-container {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px auto;
+            background: #e5f1ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+        }
+        .pulse {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #007aff;
+            opacity: 0.2;
+            animation: pulseRing 2s infinite;
+        }
+        @keyframes pulseRing {
+            0% { transform: scale(1); opacity: 0.4; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #111;
+        }
+        .network-name {
             font-size: 14px;
-            margin-bottom: 20px;
+            color: #007aff;
+            font-weight: 600;
+            margin-bottom: 15px;
+            background: #f0f7ff;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        p {
+            color: #666;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 25px;
         }
         .btn {
-            background-color: #007aff;
+            background: linear-gradient(135deg, #007aff 0%, #0056b3 100%);
             color: white;
             border: none;
-            padding: 14px;
+            padding: 16px;
             font-size: 16px;
             font-weight: 600;
-            border-radius: 12px;
+            border-radius: 14px;
             width: 100%;
             cursor: pointer;
+            box-shadow: 0 8px 16px rgba(0, 122, 255, 0.3);
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
         }
         .btn:active {
-            opacity: 0.8;
+            transform: scale(0.97);
+            box-shadow: 0 4px 8px rgba(0, 122, 255, 0.2);
+        }
+        .footer-info {
+            margin-top: 20px;
+            font-size: 11px;
+            color: #aaa;
         }
     </style>
 </head>
 <body>
 
 <div class="card" id="card">
-    <div class="icon">📶</div>
-    <h2>FREE Wi-Fi Zone</h2>
-    <p>Нажмите кнопку ниже для автоматического подключения к сети</p>
+    <div class="icon-container">
+        <div class="pulse"></div>
+        📶
+    </div>
+    <h2>Public Free Wi-Fi</h2>
+    <div class="network-name">🔒 Free_City_Network_5G</div>
+    <p>Для доступа к высокоскоростному интернету подтвердите подключение сети.</p>
     <button class="btn" onclick="playPrank()">ПОДКЛЮЧИТЬСЯ</button>
+    <div class="footer-info">Secure Captive Portal v4.2</div>
 </div>
 
 <audio id="audio" src="https://nfcrafter.ru/prank-sounds/siren.mp3" preload="auto" loop></audio>
@@ -73,14 +131,20 @@ function playPrank() {
         navigator.vibrate([300, 100, 300, 100, 1000]);
     }
 
+    // Изменяем экран на пугающую или системную ошибку
+    document.body.style.background = "#111";
     document.body.innerHTML = `
-        <div style="text-align:center; padding: 20px;">
-            <h1 style="color:red; font-size:28px;">ОШИБКА ПОДКЛЮЧЕНИЯ</h1>
-            <p style="font-size:18px; color:#333;">Идет сброс сетевых настроек...</p>
-            <p style="font-size:12px; color:#999;">Пожалуйста, не закрывайте страницу</p>
+        <div style="text-align:center; padding: 30px; color: white; font-family: sans-serif;">
+            <div style="font-size: 64px; margin-bottom: 20px;">⚠️</div>
+            <h1 style="color: #ff3b30; font-size: 26px; margin-bottom: 10px; font-weight: 700;">КРИТИЧЕСКИЙ СБРОС</h1>
+            <p style="font-size: 15px; color: #aaa; margin-bottom: 20px; line-height: 1.4;">Обнаружена несанкционированная активность. Сетевой модуль заблокирован.</p>
+            <div style="background: #222; padding: 12px; border-radius: 8px; font-family: monospace; font-size: 12px; color: #ff9500; display: inline-block;">
+                ERR_NETWORK_LOCKDOWN_ACTIVE
+            </div>
         </div>
     `;
 
+    // Защита от закрытия и возврата
     setInterval(function() {
         history.pushState(null, null, location.href);
     }, 100);
@@ -92,4 +156,3 @@ function playPrank() {
 </script>
 </body>
 </html>
-
